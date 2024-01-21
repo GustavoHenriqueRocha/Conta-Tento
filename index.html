@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Tela Responsiva com Cards</title>
+    <style>
+        body {
+            background-color: #e9e9e9;
+        }
+        .card {
+            width: 100%;
+            height: 85vh; /* Definindo a altura em 70% da altura da tela */
+            
+        }
+        .col-6 {
+            padding: 6px;
+        }
+
+        .btn-primary{
+            height: 100px;
+        }
+
+        .btn-success{
+            height: 70px;
+        }
+
+        .btn-danger{
+            height: 70px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container mt-5">
+    <h1 class="text-center text-dark">Conta Tento</h1>
+    
+    <div class="row flex-row flex-wrap justify-content-center">
+        <div class="col-6">
+            <div class="card bg-dark text-white">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Time 1</h5>
+                    <p class="card-text">pontos</p>
+                    <p class="card-text" style="font-size: 100px;"><span id="pontosTime1">0</span></p>
+                    <button class="btn btn-primary btn-block" onclick="adicionarPonto('time1')">Adicionar Ponto</button>
+                    <button class="btn btn-success btn-block" onclick="adicionarTruco('time1')">Truco!</button>
+                    <button class="btn btn-danger btn-block" onclick="removerPonto('time1')">Remover Ponto</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-6">
+            <div class="card bg-light">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Time 2</h5>
+                    <p class="card-text">pontos</p>
+                    <p class="card-text" style="font-size: 100px;"><span id="pontosTime2">0</span></p>
+                    <button class="btn btn-primary btn-block" onclick="adicionarPonto('time2')">Adicionar Ponto</button>
+                    <button class="btn btn-success btn-block" onclick="adicionarTruco('time2')">Truco!</button>
+                    <button class="btn btn-danger btn-block" onclick="removerPonto('time2')">Remover Ponto</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<script>
+    let pontosTime1 = 0;
+    let pontosTime2 = 0;
+
+    function adicionarPonto(time) {
+        if (time === 'time1') {
+            pontosTime1++;
+            document.getElementById('pontosTime1').textContent = pontosTime1;
+        } else if (time === 'time2') {
+            pontosTime2++;
+            document.getElementById('pontosTime2').textContent = pontosTime2;
+        }
+        reiniciar()
+    }
+
+    function adicionarTruco(time){
+        if (time === 'time1') {
+            pontosTime1 += 3;
+            document.getElementById('pontosTime1').textContent = pontosTime1;
+        } else if (time === 'time2') {
+            pontosTime2 += 3
+            document.getElementById('pontosTime2').textContent = pontosTime2;
+        }
+        reiniciar()
+    }
+
+    function removerPonto(time) {
+        if (time === 'time1' && pontosTime1 > 0) {
+            pontosTime1--;
+            document.getElementById('pontosTime1').textContent = pontosTime1;
+        } else if (time === 'time2' && pontosTime2 > 0) {
+            pontosTime2--;
+            document.getElementById('pontosTime2').textContent = pontosTime2;
+        }
+
+    }
+
+    function reiniciar() {
+    if (pontosTime1 >= 12 || pontosTime2 >= 12) {
+        // Reiniciar os pontos
+        pontosTime1 = 0;
+        pontosTime2 = 0;
+
+        // Atualizar a exibição dos pontos no HTML
+        document.getElementById('pontosTime1').textContent = pontosTime1;
+        document.getElementById('pontosTime2').textContent = pontosTime2;
+    }
+}
+
+</script>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
