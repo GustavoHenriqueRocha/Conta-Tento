@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <title>Conta-Tento</title>
+    <title>Conta Tento</title>
     <style>
         body {
             background-color: #e9e9e9;
@@ -12,21 +12,17 @@
         .card {
             width: 100%;
             height: 85vh; /* Definindo a altura em 70% da altura da tela */
-            
         }
         .col-6 {
             padding: 6px;
         }
-
-        .btn-primary{
+        .btn-primary {
             height: 100px;
         }
-
-        .btn-success{
+        .btn-success {
             height: 70px;
         }
-
-        .btn-danger{
+        .btn-danger {
             height: 70px;
         }
     </style>
@@ -40,7 +36,11 @@
         <div class="col-6">
             <div class="card bg-dark text-white">
                 <div class="card-body text-center">
-                    <h5 class="card-title">Time 1</h5>
+                    <h2  class="card-title" onclick="alterarNome('time1')">
+                        <span id="nomeTime1">Time 1</span>
+                        <img src="desenho1.png" alt="Formatável" style="width: 30px; height: 30px;">
+                    </h2>
+                    
                     <p class="card-text">pontos</p>
                     <p class="card-text" style="font-size: 100px;"><span id="pontosTime1">0</span></p>
                     <button class="btn btn-primary btn-block" onclick="adicionarPonto('time1')">Adicionar Ponto</button>
@@ -53,7 +53,10 @@
         <div class="col-6">
             <div class="card bg-light">
                 <div class="card-body text-center">
-                    <h5 class="card-title">Time 2</h5>
+                    <h2 class="card-title" onclick="alterarNome('time2')">
+                        <span id="nomeTime2">Time 2</span>
+                        <img src="desenho.png" alt="Formatável" style="width: 30px; height: 30spx;">
+                    </h2>
                     <p class="card-text">pontos</p>
                     <p class="card-text" style="font-size: 100px;"><span id="pontosTime2">0</span></p>
                     <button class="btn btn-primary btn-block" onclick="adicionarPonto('time2')">Adicionar Ponto</button>
@@ -63,7 +66,6 @@
             </div>
         </div>
     </div>
-</div>
 </div>
 
 <script>
@@ -78,10 +80,10 @@
             pontosTime2++;
             document.getElementById('pontosTime2').textContent = pontosTime2;
         }
-        reiniciar()
+        reiniciar();
     }
 
-    function adicionarTruco(time){
+    function adicionarTruco(time) {
         if (time === 'time1') {
             pontosTime1 += 3;
             document.getElementById('pontosTime1').textContent = pontosTime1;
@@ -89,7 +91,7 @@
             pontosTime2 += 3
             document.getElementById('pontosTime2').textContent = pontosTime2;
         }
-        reiniciar()
+        reiniciar();
     }
 
     function removerPonto(time) {
@@ -100,26 +102,32 @@
             pontosTime2--;
             document.getElementById('pontosTime2').textContent = pontosTime2;
         }
+    }
 
+    function alterarNome(time) {
+        // Obtendo o valor do campo de entrada
+        let novoNome = prompt(`Digite o novo nome para ${time}`);
+
+        if (time === 'time1') {
+            document.getElementById('nomeTime1').textContent = novoNome;
+        } else if (time === 'time2') {
+            document.getElementById('nomeTime2').textContent = novoNome;
+        }
     }
 
     function reiniciar() {
-    if (pontosTime1 >= 12 || pontosTime2 >= 12) {
-        // Reiniciar os pontos
-        pontosTime1 = 0;
-        pontosTime2 = 0;
+        if (pontosTime1 >= 12 || pontosTime2 >= 12) {
+            // Reiniciar os pontos
+            pontosTime1 = 0;
+            pontosTime2 = 0;
 
-        // Atualizar a exibição dos pontos no HTML
-        document.getElementById('pontosTime1').textContent = pontosTime1;
-        document.getElementById('pontosTime2').textContent = pontosTime2;
+            // Atualizar a exibição dos pontos no HTML
+            document.getElementById('pontosTime1').textContent = pontosTime1;
+            document.getElementById('pontosTime2').textContent = pontosTime2;
+        }
     }
-}
-
 </script>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-</body>
-</html>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js
